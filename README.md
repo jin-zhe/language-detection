@@ -1,10 +1,10 @@
 # Language-detection
 *A Python language detection module for Malay, Bahasa Indonesia and phoentic Tamil*
 
-##Running it
+## Running it
 `$ python build_test_LM.py -b input.train.txt -t input.test.txt -o input.predict.txt`
 
-##How it works
+## How it works
 The module first needs to learn the langauges by building the respective 4-gram language models with add-1 smoothing. This training file is provided as **input.train.txt**. It basically comprises of lines of each language with the first word of each line indicating the correct langauge.
 
 Provided with a test file **input.test.txt** with lines for various NL syntax, this module then predicts whether the text is Indonesian, Malaysian, phonetic Tamil, or some other language. For instance, given the following three lines:
@@ -19,7 +19,7 @@ The module will prepend the respective langauges predicted to each line and prod
 *indonesian	Semua orang dilahirkan merdeka ...*  
 *tamil	Maitap piiviyiar cakalarum cutantiramkav piakkiaar ...
 
-##Some notes
+## Some notes
 **The current implementation is based on character-based n-grams. Would character-based n-grams perform better?**  
 I think it really depends on what we are trying to achieve. I.e. what do we mean by 'performing better'
 
@@ -36,5 +36,6 @@ However if we only provided more data for a single language, for example Indones
 Detection accuracy should greatly decrease as we approach a unigram model, where we end up predicting the language at the alphabetic level. Since the all 3 languages in the current implementation uses alphabets, using unigrams defeats the purpose by ignoring the uniqueness of the language which is characterized by the distinct sequences of letters. This is analogous to having insufficient context when we use a bigram model to predict the likelihood of a language in producing a given phrase.
 
 However as we increase the n-gram size, we should expect detection to be more accurate as we would be able to capture the distinctiveness of the language's words very well and also have good context for prediction. The only drawback to this would be the exponential computational complexity.
-##Future developments
-Both **input.train.txt** and **input.test.txt** can be modified to predict different sets of langauges. Work is currently in the pipeline to collect training data which would cover most languages represented in Unicode 
+
+## Future developments
+Both **input.train.txt** and **input.test.txt** can be modified to predict different sets of langauges
